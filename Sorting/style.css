@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "poppins", sans-serif;
+}
+
+:root {
+  --background: #282a36;
+  --current_line: #44475a;
+  --foreground: #f8f8f2;
+  --comment: #6272a4;
+  --cyan: #8be9fd;
+  --green: #50fa7b;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --purple: #bd93f9;
+  --red: #ff5555;
+  --yellow: #f1fa8c;
+  --page-padding: clamp(20px, 10vw, 10%);
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header.nav {
+  display: flex;
+  align-items: center;
+  height: clamp(70px, 5vh, 80px);
+  background: var(--purple);
+  padding: 0 var(--page-padding);
+  box-shadow: 0 2px 5px -1px #000a;
+}
+header.nav h1.title {
+  font-size: 1.4em;
+  font-family: "Fira Code";
+  color: var(--background);
+}
+
+main {
+  flex: 1;
+  padding: 20px var(--page-padding);
+}
+main .bars-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+main .bars-container .bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 5px -1px #0008;
+}
+main .bars-container .bar .bar-height {
+  width: 100%;
+  flex: 1;
+  background: var(--cyan);
+}
+main .bars-container .bar .bar-value {
+  height: 30px;
+}/*# sourceMappingURL=style.css.map */

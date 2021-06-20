@@ -75,10 +75,6 @@ let compareIndex = 0;
  * @param {number} time
  */
 
-const count = 50;
-const array = generateRandomArray(count);
-drawArray(array, "main.main");
-
 const sortArray = (array) => {
 	if (array[currentIndex] > array[compareIndex]) {
 		[array[currentIndex], array[compareIndex]] = [
@@ -92,8 +88,9 @@ const sortArray = (array) => {
 };
 
 const sortInit = (array, time) => {
-	console.log(array);
 	sortArray(array);
+	currentIndex = 0;
+	compareIndex = 1;
 
 	const sorter = setInterval(() => {
 		if (compareIndex >= array.length) {
@@ -102,12 +99,56 @@ const sortInit = (array, time) => {
 		}
 
 		if (currentIndex >= array.length - 1) {
+			started = false;
 			clearInterval(sorter);
-			console.log(array);
 		}
 		sortArray(array);
 		compareIndex++;
 	}, time);
 };
 
-sortInit(array, 0);
+let settingOpened = false;
+let started = false;
+let timeout = 100;
+let count = 50;
+let array = generateRandomArray(count);
+drawArray(array, "main.main");
+
+const menuButton = $("#menu-btn");
+const settings = $(".settings");
+const speedSelect = $("#speed");
+const algoSelect = $("#algorithm");
+const generateButton = $("#generate");
+const startButton = $("#start");
+const sizeInput = $("#size");
+
+generateButton.addEventListener("click", () => {
+	if (!started) {
+		array = generateRandomArray(count);
+		drawArray(array, "main.main");
+	}
+});
+
+sizeInput.addEventListener("change", (event) => {
+	if (!started) {
+		count = parseInt(event.target.value);
+	}
+});
+
+speedSelect.addEventListener("change", (event) => {
+	const val = event.target.value;
+	timeout = parseInt(val);
+});
+
+menuButton.addEventListener("click", () => {
+	!settingOpened
+		? settings.classList.add("active")
+		: settings.classList.remove("active");
+
+	settingOpened = !settingOpened;
+});
+
+startButton.addEventListener("click", () => {
+	!started && sortInit(array, timeout);
+	started = true;
+});

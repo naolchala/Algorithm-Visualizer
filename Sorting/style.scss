@@ -38,11 +38,113 @@ header.nav {
 	padding: 0 var(--page-padding);
 
 	box-shadow: 0 2px 5px -1px #000a;
+	z-index: 3;
 
 	h1.title {
 		font-size: 1.4em;
 		font-family: "Fira Code";
 		color: var(--background);
+	}
+
+	button#menu-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+		border: none;
+		height: 40px;
+		width: 40px;
+		transition: all 400ms ease;
+
+		&:hover {
+			transform: rotate(180deg);
+		}
+
+		&:active {
+			transform: scale(2);
+		}
+
+		img {
+			height: 100%;
+			width: 100%;
+		}
+	}
+}
+
+header.settings {
+	display: flex;
+	align-items: center;
+	background: var(--current_line);
+	height: 1px;
+	overflow: hidden;
+	transition: all 300ms ease;
+
+	* {
+		display: none;
+	}
+
+	&.active {
+		display: flex;
+		padding: 15px;
+		height: 100px;
+
+		* {
+			display: flex;
+		}
+	}
+
+	button {
+		position: relative;
+		top: 8px;
+		padding: 8px 20px;
+		margin: 0 5px;
+		border: none;
+		background: var(--orange);
+		border-radius: 5px;
+		font-weight: bold;
+		color: var(--background);
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&#generate {
+			background: var(--yellow);
+		}
+	}
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.select {
+	display: flex;
+	flex-direction: column;
+	margin: 0 15px;
+	position: relative;
+
+	label {
+		font-size: small;
+		bottom: -10px;
+	}
+
+	input {
+		padding: 8px 20px;
+		border: none;
+		border-radius: 5px;
+		background: var(--background);
+		color: white;
+		outline: none;
+	}
+
+	select {
+		padding: 8px 20px;
+		border: none;
+		border-radius: 5px;
+		background: var(--background);
+		color: white;
+		outline: none;
 	}
 }
 

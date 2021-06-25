@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: "poppins", sans-serif;
+  font-family: "fira code", sans-serif;
 }
 
 :root {
@@ -43,7 +43,20 @@ header.nav h1.title {
   font-family: "Fira Code";
   color: var(--background);
 }
-header.nav button#menu-btn {
+header.nav button#start {
+  position: relative;
+  padding: 8px 20px;
+  margin: 0 5px;
+  border: none;
+  background: var(--current_line);
+  border-radius: 5px;
+  font-weight: bold;
+  color: var(--yellow);
+}
+header.nav button#start:hover {
+  opacity: 0.8;
+}
+header.nav #menu-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,13 +66,13 @@ header.nav button#menu-btn {
   width: 40px;
   transition: all 400ms ease;
 }
-header.nav button#menu-btn:hover {
+header.nav #menu-btn:hover {
   transform: rotate(180deg);
 }
-header.nav button#menu-btn:active {
+header.nav #menu-btn:active {
   transform: scale(2);
 }
-header.nav button#menu-btn img {
+header.nav #menu-btn img {
   height: 100%;
   width: 100%;
 }
@@ -156,4 +169,8 @@ main .bars-container .bar .bar-height {
 }
 main .bars-container .bar .bar-value {
   height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }/*# sourceMappingURL=style.css.map */

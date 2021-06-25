@@ -11,6 +11,7 @@
 		<header class="nav">
 			<h1 class="title">Sorting Algorithm Visualizer</h1>
 			<div class="flex-1"></div>
+			<button id="start">Start Sorting</button>
 			<button id="menu-btn">
 				<img src="/assets/ic_settings_48px.svg" alt="settings" />
 			</button>
@@ -19,9 +20,9 @@
 			<div class="select">
 				<label for="speed">Speed</label>
 				<select id="speed">
-					<option value="10">Very Fast</option>
+					<option value="10" selected>Very Fast</option>
 					<option value="100">Fast</option>
-					<option value="500" selected>Medium</option>
+					<option value="500">Medium</option>
 					<option value="1000">Slow</option>
 				</select>
 			</div>
@@ -37,11 +38,10 @@
 
 			<div class="select">
 				<label for="size">Count</label>
-				<input type="number" value="50" min="5" max="300" id="size" />
+				<input type="number" value="20" min="5" max="300" id="size" />
 			</div>
 			<div class="flex-1"></div>
 			<button id="generate">Generate New Array</button>
-			<button id="start">Start Sorting</button>
 		</header>
 		<main class="main"></main>
 	</body>

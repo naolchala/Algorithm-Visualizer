@@ -1,5 +1,6 @@
 /**
  *
+ *
  * @param {string} selector : CSS Selector
  * @returns {Element}
  */
@@ -52,7 +53,7 @@ const drawArray = (array, selector) => {
 
 		const valueVisual = document.createElement("div");
 		valueVisual.className = "bar-height";
-		bar.append(valueVisual);
+		bar.prepend(valueVisual);
 		bar.className = "bar";
 		bar.style.height = `${array[i]}%`;
 		barsContainer.appendChild(bar);
@@ -60,37 +61,40 @@ const drawArray = (array, selector) => {
 	parentElement.appendChild(barsContainer);
 };
 
+/**
+ *
+ * @param {number} index Array Index to be colored
+ * @param {string} color Color variable name defined in css
+ */
 const highlightBar = (index, color) => {
 	const parent = $("main.main .bars-container");
 	const bar = parent.children[index];
 	bar.children[0].style.background = `var(--${color})`;
 };
 
-let currentIndex = 0;
-let compareIndex = 0;
-
 /**
  *
  * @param {number[]} array
- * @param {number} time
  */
 
-const sortArray = (array) => {
-	if (array[currentIndex] > array[compareIndex]) {
-		[array[currentIndex], array[compareIndex]] = [
-			array[compareIndex],
-			array[currentIndex],
-		];
-	}
-	drawArray(array, "main.main");
-	highlightBar(compareIndex, "red");
-	highlightBar(currentIndex, "red");
-};
-
 const sortInit = (array, time) => {
+	let currentIndex = 0;
+	let compareIndex = 1;
+
+	const sortArray = (array) => {
+		if (array[currentIndex] > array[compareIndex]) {
+			[array[currentIndex], array[compareIndex]] = [
+				array[compareIndex],
+				array[currentIndex],
+			];
+		}
+
+		drawArray(array, "main.main");
+		highlightBar(compareIndex, "red");
+		highlightBar(currentIndex, "red");
+	};
+
 	sortArray(array);
-	currentIndex = 0;
-	compareIndex = 1;
 
 	const sorter = setInterval(() => {
 		if (compareIndex >= array.length) {
@@ -98,19 +102,24 @@ const sortInit = (array, time) => {
 			compareIndex = currentIndex;
 		}
 
+		sortArray(array);
+		compareIndex++;
+
 		if (currentIndex >= array.length - 1) {
 			started = false;
 			clearInterval(sorter);
+
+			for (let i = 0; i < array.length; i++) {
+				highlightBar(i, "green");
+			}
 		}
-		sortArray(array);
-		compareIndex++;
 	}, time);
 };
 
 let settingOpened = false;
 let started = false;
-let timeout = 100;
-let count = 50;
+let timeout = 10;
+let count = 20;
 let array = generateRandomArray(count);
 drawArray(array, "main.main");
 
@@ -132,6 +141,8 @@ generateButton.addEventListener("click", () => {
 sizeInput.addEventListener("change", (event) => {
 	if (!started) {
 		count = parseInt(event.target.value);
+		array = generateRandomArray(count);
+		drawArray(array, "main.main");
 	}
 });
 

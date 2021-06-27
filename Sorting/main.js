@@ -5,6 +5,7 @@
  * @returns {Element}
  */
 const $ = (selector) => document.querySelector(selector);
+
 /**
  *
  * @param {number} min
@@ -31,7 +32,6 @@ const generateRandomArray = (size) => {
 };
 
 /**
- *
  * @param {number[]} array
  * @param {string} selector : CSS Selector to rendered in
  */
@@ -75,6 +75,7 @@ const highlightBar = (index, color) => {
 /**
  *
  * @param {number[]} array
+ * @param {number} time to loop over everyloop
  */
 
 const sortInit = (array, time) => {
